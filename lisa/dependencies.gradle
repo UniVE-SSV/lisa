@@ -3,6 +3,14 @@ repositories {
     mavenCentral()
 }
 
+// this is to tell eclipse that libraries should be placed on modulepath instead of classpath
+eclipse.classpath.file {
+    whenMerged {
+        entries.findAll { it.kind == 'lib' }.each { it.entryAttributes['module'] = 'true' }
+    }
+}
+modularity.improveEclipseClasspathFile()
+
 dependencies {
     // utils
     api 'org.apache.commons:commons-lang3:3.9'

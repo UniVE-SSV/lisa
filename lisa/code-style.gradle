@@ -11,6 +11,8 @@ checkstyleMain {
         xml.enabled false
         html.enabled false
     }
+    
+    exclude '**/module-info.java'
 }
 
 checkstyleTest {
@@ -54,6 +56,7 @@ spotless {
       		include '**/*.java'
       		exclude '**/build/generated/**'
       		exclude '**/build/generated-src/**'
+      		exclude '**/target/generated-sources/**'
     	}
   	}
   	antlr4 {

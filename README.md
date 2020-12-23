@@ -1,7 +1,7 @@
 # LiSA 
 
 ![GitHub](https://img.shields.io/github/license/UniVE-SSV/lisa?color=brightgreen)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/UniVE-SSV/lisa/Gradle%20Build/master)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/UniVE-SSV/lisa/Gradle%20Build%20on%20Master/master)
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/UniVE-SSV/lisa?include_prereleases&sort=semver&color=brightgreen)
 ![GitHub last commit](https://img.shields.io/github/last-commit/UniVE-SSV/lisa)
 ![Maven Central](https://img.shields.io/maven-central/v/com.github.unive-ssv/lisa?color=brightgreen)

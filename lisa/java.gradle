@@ -22,12 +22,45 @@ plugins.withType(JavaPlugin) {
 }
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
     withJavadocJar()
     withSourcesJar()
 }
 
+ext.moduleName = 'it.unive.lisa'
+
+// this fixes the javadoc search adding the "undefined" prefix to the package name when searching
+final JAVADOC_FIX_SEARCH_STR = '\n\n' +
+'getURLPrefix = function(ui) {\n' +
+'    return \'\';\n' +
+'};\n'
+
 javadoc {
-	if(JavaVersion.current().isJava9Compatible()) {
+	if (JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption('html5', true)
     }
+    
+    moduleOptions {
+        addModules = [
+        	'java.base',
+            'org.apache.commons.lang3',
+            'gs.core',
+            'com.fasterxml.jackson.databind',
+        ]
+    }
+    
+    options.with {
+        // links to external docs
+        links "https://docs.oracle.com/en/java/javase/${JavaVersion.current()}/docs/api/"
+    }
+
+    doLast {
+        // append the fix to the file
+        def searchScript = new File(destinationDir.getAbsolutePath() + '/search.js')
+        searchScript.append JAVADOC_FIX_SEARCH_STR
+    }
+    
+	inputs.property('moduleName', moduleName)
+	exclude "**/module-info.java"
 }
